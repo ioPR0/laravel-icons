@@ -1,0 +1,28 @@
+{
+    "name": "iopro/laravel-icons",
+    "description": "Easily use Heroicons in Laravel projects",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "ioPRO",
+            "email": "master@iopro.ru"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "IOPro\\LaravelIcons\\": "src"
+        }
+    },
+    "require": {
+        "php": "^8.1"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "IOPro\\LaravelIcons\\IconsServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
