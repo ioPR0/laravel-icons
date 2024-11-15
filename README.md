@@ -18,21 +18,21 @@ composer require iopro/laravel-icons
 ## Usage
 
 ```blade
-<x-icons-icon_name />
+<x-icons.icon_name />
 ```
 
 By default, the `outline` icons are used. If you want to use another type (`solid`, `mini`, `micro`), add needed attribute to the component:
 
 ```blade
-<x-icons-icon_name solid />
-<x-icons-icon_name mini />
-<x-icons-icon_name micro />
+<x-icons.icon_name solid />
+<x-icons.icon_name mini />
+<x-icons.icon_name micro />
 ```
 
 You can also customize other icon attributes. For example:
 
 ```blade
-<x-icons-icon_name 
+<x-icons.icon_name 
     stroke-width="1.5" 
     fill="none" 
     stroke="currentColor" 
@@ -46,5 +46,3 @@ You can also customize other icon attributes. For example:
 ## License
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
-Thank you [Vojislav](https://vojislavd.com/)
-The [vojislavd/heroicons-laravel](https://github.com/VojislavD/heroicons-laravel) package was the basis of my work.
