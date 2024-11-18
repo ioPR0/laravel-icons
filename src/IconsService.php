@@ -1,7 +1,6 @@
 <?php
 namespace IOPro\LaravelIcons;
 
-use AllowDynamicProperties;
 use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
