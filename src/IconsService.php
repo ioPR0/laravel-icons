@@ -1,40 +1,52 @@
 <?php
-
 namespace IOPro\LaravelIcons;
 
+use AllowDynamicProperties;
 use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
 
-class IconsService
+final class IconsService
 {
-    const ICONS_PATH = '/heroicons';
-    const ICONS_PATH_OUTLINE = '24/outline';
-    const ICONS_PATH_SOLID = '24/solid';
-    const ICONS_PATH_MINI = '20/solid';
-    const ICONS_PATH_MICRO = '16/solid';
-    private Filesystem $storage;
+
+    private Filesystem $hero_icons_storage;
+    private Filesystem $custom_icons_storage;
 
     public function __construct()
     {
-        $this->storage = Storage::build([
+        $this->hero_icons_storage = Storage::build([
             'driver' => 'local',
-            'root' => __DIR__ . self::ICONS_PATH,
+            'root' => __DIR__ . Icon::ICONS_PATH,
+        ]);
+        $this->custom_icons_storage = Storage::build([
+            'driver' => 'local',
+            'root' => base_path('resources/views/' . config('laravel-icons.custom_path')),
         ]);
     }
 
-    public function getIconsNames(): Collection
+    public function hero(): Filesystem
     {
-        $files = $this->storage->files(self::ICONS_PATH_OUTLINE);
-        return collect($files)->map(function (string $item) {
-            return str(str($item)->explode('/')->last())->before('.');
-        });
+        return $this->hero_icons_storage;
     }
 
-    public function getContent($file): ?string
+    public function custom(): Filesystem
     {
-        return $this->storage->exists($file) ?
-            $this->storage->get($file) :
-            null;
+        return $this->custom_icons_storage;
     }
+
+    public function getAllIconsNames(): Collection
+    {
+        $heroIcons = collect($this->hero_icons_storage->files(Icon::ICONS_PATH_OUTLINE))
+            ->map(function (string $item) {
+                return str($item)->afterLast('/')->before('.')->toString();
+            });
+
+        $customIcons = collect($this->custom_icons_storage->files())
+            ->map(function (string $item) {
+                return str($item)->before('.')->toString();
+            });
+
+        return $heroIcons->merge($customIcons);
+    }
+
 }
