@@ -1,7 +1,6 @@
 {
     "name": "iopro/laravel-icons",
     "description": "Easily use Heroicons in Laravel projects",
-    "version": "1.1.0",
     "license": "MIT",
     "authors": [
         {
