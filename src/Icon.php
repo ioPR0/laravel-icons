@@ -7,12 +7,12 @@ use Illuminate\View\Component;
 
 class Icon extends Component
 {
-    const string SQUARE = '<rect x="1" y="1" width="100%" height="100%"/>';
-    const string ICONS_PATH = '/heroicons';
-    const string ICONS_PATH_OUTLINE = '24/outline';
-    const string ICONS_PATH_SOLID = '24/solid';
-    const string ICONS_PATH_MINI = '20/solid';
-    const string ICONS_PATH_MICRO = '16/solid';
+    const SQUARE = '<rect x="1" y="1" width="100%" height="100%"/>';
+    const ICONS_PATH = '/heroicons';
+    const ICONS_PATH_OUTLINE = '24/outline';
+    const ICONS_PATH_SOLID = '24/solid';
+    const ICONS_PATH_MINI = '20/solid';
+    const ICONS_PATH_MICRO = '16/solid';
     public ?bool $solid;
     public ?bool $mini;
     public ?bool $micro;
